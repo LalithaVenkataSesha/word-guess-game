@@ -1,0 +1,11 @@
+#hangman {
+   text-align:center;
+   background-image: linear-gradient(red, yellow);
+   width:9em;
+   position:absolute;
+   left:15em;
+   bottom:10em;
+}
+img {
+  width:78em;
+}

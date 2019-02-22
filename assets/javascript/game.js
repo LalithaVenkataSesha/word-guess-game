@@ -1,5 +1,5 @@
 var words = [
-     'Javascript',
+     'javascript',
      'document',
      'element',
      'object',
@@ -11,28 +11,27 @@ var words = [
      'animation'
   ];
 var word = words[Math.floor(Math.random() * words.length)];
+console.log(word);
 var answerArray = [];
+var userGuesses = [];
+var guessedletters = document.getElementById('guess');
 for (var i = 0; i < word.length; i++) {
  answerArray[i] = "_";
 }
 var remainingLetters = word.length;
-while (remainingLetters > 0) {
+var guess = document.getElementById('letter');
+guess.textContent = answerArray.join(" ");
 
-alert(answerArray.join(" "));
+document.onkeyup = function(event) {
+var userGuess = event.key.toLowerCase();
+ userGuesses.push(userGuess);
+ guessedletters.textContent = "your guesses " + userGuesses.join(", ");
 
- var guess = prompt("Guess a letter, or click Cancel to stop playing.");
- if (guess === null) {
- break;
- } else if (guess.length !== 1) {
- alert("Please enter a single letter.");
-} else {
   for (var j = 0; j < word.length; j++) {
- if (word[j] === guess) {
- answerArray[j] = guess;
+ if (word[j] === userGuess) {
+ answerArray[j] = userGuess;
+ guess.textContent = answerArray.join(" ");
  remainingLetters--;
  }
 }
-}
-}
-alert(answerArray.join(" "));
-alert("Good job! The answer was " + word);
+};
